@@ -2,12 +2,12 @@
 import { ref } from 'vue'
 import InputPriceFormatter from '@/components/InputPriceFormatter.vue'
 
-const price = ref(0)
+const price = ref('')
 </script>
 
 <template>
   <div id="app">
-    <InputPriceFormatter v-model="price" />
+    <InputPriceFormatter v-model="price" label="مبلغ" has-rial />
   </div>
 </template>
 
@@ -20,6 +20,11 @@ const price = ref(0)
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: 'IranSans';
+  src: url(./assets/fonts/iransans.ttf) format('truetype');
+}
+
 #app {
   width: 100vw;
   height: 100vh;
@@ -28,5 +33,6 @@ const price = ref(0)
   align-items: center;
   padding-top: 30px;
   background-color: #eee;
+  font-family: 'IranSans',sans-serif;
 }
 </style>
