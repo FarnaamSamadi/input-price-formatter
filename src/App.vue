@@ -1,13 +1,26 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watchEffect } from 'vue'
 import InputPriceFormatter from '@/components/InputPriceFormatter.vue'
 
 const price = ref('')
+
+// auto focus on input
+const priceInput = ref()
+watchEffect(() => {
+  if (priceInput.value) {
+    priceInput.value.$el.focus()
+  }
+})
 </script>
 
 <template>
   <div id="app">
-    <InputPriceFormatter v-model="price" label="مبلغ" has-rial />
+    <InputPriceFormatter
+      v-model="price"
+      label="مبلغ"
+      has-rial
+      ref="priceInput"
+    />
   </div>
 </template>
 
@@ -33,6 +46,6 @@ const price = ref('')
   align-items: center;
   padding-top: 30px;
   background-color: #eee;
-  font-family: 'IranSans',sans-serif;
+  font-family: 'IranSans', sans-serif;
 }
 </style>
